@@ -43,7 +43,6 @@ public class OrdersServiceImpl implements  OrdersService {
 
     @Override
     public Order submitOrder(Order order) {
-
         OrderEntity orderEntity = modelMapper.map(order, OrderEntity.class);
         orderEntity = ordersRepository.save(orderEntity);
 

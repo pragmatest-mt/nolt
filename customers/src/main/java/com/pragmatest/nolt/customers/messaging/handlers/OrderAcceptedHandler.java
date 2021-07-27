@@ -5,9 +5,11 @@ import com.pragmatest.nolt.customers.service.OrdersService;
 import com.pragmatest.nolt.customers.service.models.Order;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+@ConditionalOnProperty(value = "kafka.enabled", matchIfMissing = true)
 @Component
 public class OrderAcceptedHandler {
 
