@@ -1,4 +1,4 @@
-package com.pragmatest.nolt.customers.configuration;
+package com.pragmatest.nolt.restaurants.configuration;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

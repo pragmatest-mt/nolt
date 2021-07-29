@@ -1,4 +1,4 @@
-package com.pragmatest.nolt.customers.service.models;
+package com.pragmatest.nolt.restaurants.service.models;
 
 public class OrderItem {
 

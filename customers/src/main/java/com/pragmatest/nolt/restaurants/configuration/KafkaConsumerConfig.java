@@ -1,6 +1,6 @@
-package com.pragmatest.nolt.customers.configuration;
+package com.pragmatest.nolt.restaurants.configuration;
 
-import com.pragmatest.nolt.customers.messaging.events.OrderAcceptedEvent;
+import com.pragmatest.nolt.restaurants.messaging.events.OrderAcceptedEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

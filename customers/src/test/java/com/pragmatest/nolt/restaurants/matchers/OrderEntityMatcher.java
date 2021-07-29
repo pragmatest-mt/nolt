@@ -1,6 +1,6 @@
-package com.pragmatest.nolt.customers.matchers;
+package com.pragmatest.nolt.restaurants.matchers;
 
-import com.pragmatest.nolt.customers.data.entities.OrderEntity;
+import com.pragmatest.nolt.restaurants.data.entities.OrderEntity;
 import org.mockito.ArgumentMatcher;
 import com.cedarsoftware.util.DeepEquals;
 
