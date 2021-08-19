@@ -1,7 +1,6 @@
-package com.pragmatest.nolt.specifications.common.models.customers;
+package com.pragmatest.nolt.specifications.common.models.restaurants;
 
-public class CustomerSubmitOrderResponse {
-
+public class RestaurantAcceptOrderResponse {
     private String id;
 
     public String getId() {

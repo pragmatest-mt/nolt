@@ -2,6 +2,7 @@ package com.pragmatest.nolt.specifications.common.services.customers;
 
 import com.pragmatest.nolt.specifications.common.models.customers.CustomerSubmitOrderRequest;
 import com.pragmatest.nolt.specifications.common.models.customers.CustomerSubmitOrderResponse;
+import com.pragmatest.nolt.specifications.common.models.customers.GetCustomerOrderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -14,7 +15,10 @@ import java.util.Collections;
 public class CustomersOrderServiceImpl implements CustomersOrderService {
 
     @Value(value = "${customers-service.submit-customer-order.url-template}")
-    String urlTemplate;
+    String submitCustomerOrderUrl;
+
+    @Value(value = "${customers-service.get-customer-order.url-template}")
+    String getCustomerOrderUrl;
 
     @Autowired
     RestTemplate restTemplate;
@@ -22,16 +26,30 @@ public class CustomersOrderServiceImpl implements CustomersOrderService {
     @Override
     public ResponseEntity<CustomerSubmitOrderResponse> SubmitCustomerOrder(String customerId, CustomerSubmitOrderRequest request) {
         HttpEntity<CustomerSubmitOrderRequest> requestEntity = new HttpEntity<>(request, getDefaultHeaders(customerId));
-        
-        restTemplate.exchange(urlTemplate, HttpMethod.POST, requestEntity, CustomerSubmitOrderResponse.class);
 
-        return new ResponseEntity(new CustomerSubmitOrderResponse(), HttpStatus.OK);
+        ResponseEntity<CustomerSubmitOrderResponse> customerSubmitOrderResponseResponseEntity = restTemplate.exchange(
+                submitCustomerOrderUrl, HttpMethod.POST,
+                requestEntity, CustomerSubmitOrderResponse.class);
+
+        return customerSubmitOrderResponseResponseEntity;
+    }
+
+    @Override
+    public ResponseEntity<GetCustomerOrderResponse> GetCustomerOrder(String customerId, String orderId) {
+        String url = getCustomerOrderUrl;
+
+        HttpEntity request = new HttpEntity(getDefaultHeaders(customerId));
+
+        ResponseEntity<GetCustomerOrderResponse> response = restTemplate.exchange(
+                url, HttpMethod.GET,
+                request, GetCustomerOrderResponse.class, orderId);
+
+        return response;
     }
 
     private HttpHeaders getDefaultHeaders(String customerId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.set("X-Customer-Id", customerId);
         return httpHeaders;
     }
