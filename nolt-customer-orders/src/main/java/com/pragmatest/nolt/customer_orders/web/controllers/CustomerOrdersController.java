@@ -33,4 +33,6 @@ public class CustomerOrdersController {
         String orderId = customerOrdersService.submitOrder(orderSubmission);
         return new SubmitOrderResponse(orderId);
     }
+
+    // TODO add get endpoint that matches the contract: https://app.swaggerhub.com/apis-docs/pragma65/Nolt/1.0.0
 }

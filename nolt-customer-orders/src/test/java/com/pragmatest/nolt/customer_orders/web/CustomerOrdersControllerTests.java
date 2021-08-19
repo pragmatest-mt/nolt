@@ -54,4 +54,23 @@ public class CustomerOrdersControllerTests {
         verify(customerOrdersServiceMock, times(1)).submitOrder(any(OrderSubmission.class));
     }
 
+    @Test
+    public void testGetOrderValidId() {
+        // Arrange
+
+        String customerId = UUID.randomUUID().toString();
+        String orderId = UUID.randomUUID().toString();
+
+        // TODO - create a mock for the CustomerOrdersService's getOrder method that, given the orderId, return a fake order
+
+        // Act
+
+        // TODO - call the get() method inside the controller and save the response in a variable
+
+        // Assert
+
+        // TODO - verify service mock was called
+        // TODO - assert the response matches what was given by mock
+    }
+
 }
