@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class CustomerOrdersServiceTest {
+class CustomerOrdersServiceTests {
 
     @Autowired
     CustomerOrdersService customerOrdersService;
