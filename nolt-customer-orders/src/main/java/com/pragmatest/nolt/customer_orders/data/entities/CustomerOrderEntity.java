@@ -1,11 +1,19 @@
-package com.pragmatest.nolt.customer_orders.services.models;
+package com.pragmatest.nolt.customer_orders.data.entities;
 
+import javax.persistence.*;
 import java.util.List;
 
-public class OrderSubmission {
+@Entity
+public class CustomerOrderEntity {
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name="ORDER_ITEMS", joinColumns=@JoinColumn(name="ORDER_ID"))
     private List<OrderItem> orderItems;
+
     private String customerId;
+
+    @Id
+    private String orderId;
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
@@ -23,4 +31,11 @@ public class OrderSubmission {
         this.customerId = customerId;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 }

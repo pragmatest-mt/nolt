@@ -1,6 +1,7 @@
 package com.pragmatest.nolt.customer_orders.web;
 
 import com.pragmatest.nolt.customer_orders.services.CustomerOrdersService;
+import com.pragmatest.nolt.customer_orders.services.models.OrderSubmission;
 import com.pragmatest.nolt.customer_orders.web.controllers.CustomerOrdersController;
 import com.pragmatest.nolt.customer_orders.web.requests.OrderItem;
 import com.pragmatest.nolt.customer_orders.web.requests.SubmitOrderRequest;
@@ -35,7 +36,7 @@ public class CustomerOrdersControllerTests {
         SubmitOrderRequest request = new SubmitOrderRequest(List.of(new OrderItem("burger", 1, "no lettuce")));
 
         String expectedOrderId = UUID.randomUUID().toString();
-        when(customerOrdersServiceMock.submitOrder()).thenReturn(expectedOrderId);
+        when(customerOrdersServiceMock.submitOrder(any(OrderSubmission.class))).thenReturn(expectedOrderId);
 
         // Act
 
@@ -50,7 +51,7 @@ public class CustomerOrdersControllerTests {
 
         assertEquals(expectedOrderId, id);
 
-        verify(customerOrdersServiceMock, times(1)).submitOrder();
+        verify(customerOrdersServiceMock, times(1)).submitOrder(any(OrderSubmission.class));
     }
 
 }
