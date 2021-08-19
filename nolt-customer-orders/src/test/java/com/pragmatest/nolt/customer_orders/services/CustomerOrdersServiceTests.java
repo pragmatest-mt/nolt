@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class CustomerOrdersServiceTest {
+class CustomerOrdersServiceTests {
 
     @Autowired
     CustomerOrdersService customerOrdersService;
