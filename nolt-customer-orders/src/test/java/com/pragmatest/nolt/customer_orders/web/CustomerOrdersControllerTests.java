@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -49,6 +49,8 @@ public class CustomerOrdersControllerTests {
         assertNotNull(id, "Id in response is null.");
 
         assertEquals(expectedOrderId, id);
+
+        verify(customerOrdersServiceMock, times(1)).submitOrder();
     }
 
 }
