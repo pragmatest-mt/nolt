@@ -4,6 +4,7 @@ import com.pragmatest.nolt.specifications.common.models.customers.CustomerSubmit
 import com.pragmatest.nolt.specifications.common.models.customers.CustomerSubmitOrderResponse;
 import com.pragmatest.nolt.specifications.common.services.customers.CustomersOrderService;
 import com.pragmatest.nolt.specifications.common.state.Order;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,6 @@ public class CustomerOrderSubmissionSteps {
 
     @Given("a customer submits an order to a restaurant")
     public void aCustomerSubmitsAnOrderToARestaurant() {
-
         String customerId = "018777ce-8730-46ae-800c-9a1e950e05c0";
         CustomerSubmitOrderRequest request = new CustomerSubmitOrderRequest();
 
