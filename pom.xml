@@ -12,10 +12,13 @@
 		<java.version>11</java.version>
 		<spring-boot.version>2.5.3</spring-boot.version>
 		<cucumber.version>6.10.4</cucumber.version>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<cucumber-reporting.version>5.5.4</cucumber-reporting.version>
 	</properties>
 
-	<!-- Parent pom manages plugins for all submodules. These however need to be in submodule pom to be used. -->
+	<!-- Here we centralize the declaration of all dependencies used in child modules and set their version. -->
 	<dependencyManagement>
+
 		<dependencies>
 
 			<dependency>
@@ -67,11 +70,12 @@
 			<dependency>
 				<groupId>net.masterthought</groupId>
 				<artifactId>cucumber-reporting</artifactId>
-				<version>5.5.4</version>
+				<version>${cucumber-reporting.version}</version>
 				<scope>test</scope>
 			</dependency>
 
 		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
@@ -82,17 +86,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<release>11</release>
-					<source>11</source>
-					<target>11</target>
+					<release>${java.version}</release>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
 
 		<!-- Parent pom manages plugins for all submodules. These however need to be in submodule pom to be used. -->
-		<pluginManagement>			<plugins>
+		<pluginManagement>
+			<plugins>
 				<!--
 				Can create jar files with all application dependencies that can be run with java -jar
 				Helps start application before integration tests
