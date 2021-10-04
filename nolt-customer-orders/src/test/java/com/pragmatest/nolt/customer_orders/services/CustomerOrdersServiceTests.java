@@ -55,7 +55,7 @@ class CustomerOrdersServiceTests {
         verify(repository, times(1)).save(argThat(matcher));
 
         assertNotNull(id, "Id in response is null.");
-
+        assertIsValidUuid(id);
         assertEquals(matcher.getMatch().getOrderId(), id);
     }
 }
@@ -97,7 +97,5 @@ class CustomerOrderEntityMatcher implements ArgumentMatcher<CustomerOrderEntity>
         } catch(IllegalArgumentException e) {
             return false;
         }
-
-        assertIsValidUuid(id);
     }
 }
