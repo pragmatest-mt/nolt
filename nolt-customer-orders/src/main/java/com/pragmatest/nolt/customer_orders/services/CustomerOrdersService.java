@@ -2,11 +2,16 @@ package com.pragmatest.nolt.customer_orders.services;
 
 import com.pragmatest.nolt.customer_orders.data.entities.CustomerOrderEntity;
 import com.pragmatest.nolt.customer_orders.data.repositories.CustomerOrdersRepository;
+import com.pragmatest.nolt.customer_orders.services.models.Order;
 import com.pragmatest.nolt.customer_orders.services.models.OrderSubmission;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -30,6 +35,12 @@ public class CustomerOrdersService
         return savedEntity.getOrderId();
     }
 
-    // TODO add a getOrder method that reads the order with the specified id from the CustomerOrdersRepository
+    public Order getOrder(String orderId) {
+
+        Optional<CustomerOrderEntity> orderEntities = repository.findById(orderId);
+
+        Order order = mapper.map(orderEntities.get(), Order.class);
+        return order;
+    }
 
 }

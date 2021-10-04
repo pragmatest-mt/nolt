@@ -1,10 +1,13 @@
 package com.pragmatest.nolt.customer_orders.web;
 
+import com.cedarsoftware.util.DeepEquals;
 import com.pragmatest.nolt.customer_orders.services.CustomerOrdersService;
+import com.pragmatest.nolt.customer_orders.services.models.Order;
 import com.pragmatest.nolt.customer_orders.services.models.OrderSubmission;
 import com.pragmatest.nolt.customer_orders.web.controllers.CustomerOrdersController;
 import com.pragmatest.nolt.customer_orders.web.requests.OrderItem;
 import com.pragmatest.nolt.customer_orders.web.requests.SubmitOrderRequest;
+import com.pragmatest.nolt.customer_orders.web.responses.GetOrderResponse;
 import com.pragmatest.nolt.customer_orders.web.responses.SubmitOrderResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,16 +65,24 @@ public class CustomerOrdersControllerTests {
         String customerId = UUID.randomUUID().toString();
         String orderId = UUID.randomUUID().toString();
 
-        // TODO - create a mock for the CustomerOrdersService's getOrder method that, given the orderId, return a fake order
+        List<com.pragmatest.nolt.customer_orders.services.models.OrderItem> orderItems =
+                List.of(new com.pragmatest.nolt.customer_orders.services.models.OrderItem(
+                        "burger", 1, "no lettuce"
+                ));
+
+        Order serviceOrder = new Order(customerId, orderId, orderItems);
+
+        GetOrderResponse expectedOrderResponse = new GetOrderResponse(customerId, orderId, orderItems);
+
+        when(customerOrdersServiceMock.getOrder(orderId)).thenReturn(serviceOrder);
 
         // Act
-
-        // TODO - call the get() method inside the controller and save the response in a variable
+        GetOrderResponse actualGetOrderResponse = customerOrdersController.get(customerId, orderId);
 
         // Assert
+        assertTrue(DeepEquals.deepEquals(actualGetOrderResponse, expectedOrderResponse));
 
-        // TODO - verify service mock was called
-        // TODO - assert the response matches what was given by mock
+        verify(customerOrdersServiceMock, times(1)).getOrder(orderId);
     }
 
 }

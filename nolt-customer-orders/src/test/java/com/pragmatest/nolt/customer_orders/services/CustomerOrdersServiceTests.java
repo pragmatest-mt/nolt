@@ -3,6 +3,7 @@ package com.pragmatest.nolt.customer_orders.services;
 import com.cedarsoftware.util.DeepEquals;
 import com.pragmatest.nolt.customer_orders.data.entities.CustomerOrderEntity;
 import com.pragmatest.nolt.customer_orders.data.repositories.CustomerOrdersRepository;
+import com.pragmatest.nolt.customer_orders.services.models.Order;
 import com.pragmatest.nolt.customer_orders.services.models.OrderItem;
 import com.pragmatest.nolt.customer_orders.services.models.OrderSubmission;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,19 +62,35 @@ class CustomerOrdersServiceTests {
 
     @Test
     public void testGetOrder() {
+
         // Arrange
 
-        // TODO setup the mock for the repository layer and any other variable required to Act and Assert
+        List<com.pragmatest.nolt.customer_orders.data.entities.OrderItem> entityOrderItems
+                = List.of(new com.pragmatest.nolt.customer_orders.data.entities.OrderItem(
+                "burger", 1, "no lettuce"
+        ));
+
+        String customerId = UUID.randomUUID().toString();
+        String orderId = UUID.randomUUID().toString();
+
+        Optional<CustomerOrderEntity> repositoryOrderEntity = Optional.of(new CustomerOrderEntity(entityOrderItems, customerId, orderId));
+
+        List<com.pragmatest.nolt.customer_orders.services.models.OrderItem> orderItems
+                = List.of(new com.pragmatest.nolt.customer_orders.services.models.OrderItem(
+                "burger", 1, "no lettuce"
+        ));
+        Order expectedOrder = new Order(customerId, orderId, orderItems);
+
+        when(repository.findById(orderId)).thenReturn(repositoryOrderEntity);
 
         // Act
 
-        // TODO - call the service's getOrder method and save the returned object in a variable
+        Order actualOrder = customerOrdersService.getOrder(orderId);
 
         // Assert
 
-        // TODO - verify repository mock was called
-        // TODO - assert the services response matches what was given by repository mock
-
+        DeepEquals.deepEquals(actualOrder, expectedOrder);
+        verify(repository, times(1)).findById(orderId);
     }
 }
 

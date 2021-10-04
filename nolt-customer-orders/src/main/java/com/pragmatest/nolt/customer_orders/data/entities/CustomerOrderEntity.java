@@ -15,6 +15,15 @@ public class CustomerOrderEntity {
     @Id
     private String orderId;
 
+    public CustomerOrderEntity(List<OrderItem> orderItems, String customerId, String orderId) {
+        this.orderItems = orderItems;
+        this.customerId = customerId;
+        this.orderId = orderId;
+    }
+
+    public CustomerOrderEntity() {
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
