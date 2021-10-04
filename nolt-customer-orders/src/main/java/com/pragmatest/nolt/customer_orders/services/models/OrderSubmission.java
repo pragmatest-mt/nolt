@@ -4,15 +4,17 @@ import java.util.List;
 
 public class OrderSubmission {
 
+
     private List<OrderItem> orderItems;
     private String customerId;
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+
+    public OrderSubmission(String customerId, List<OrderItem> orderItems) {
+        this.customerId = customerId;
+        this.orderItems = orderItems;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public OrderSubmission() {
     }
 
     public String getCustomerId() {
@@ -21,6 +23,15 @@ public class OrderSubmission {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
+    }
+
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
 }

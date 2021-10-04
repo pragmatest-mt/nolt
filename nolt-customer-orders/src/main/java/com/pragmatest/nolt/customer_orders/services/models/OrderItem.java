@@ -38,5 +38,5 @@ public class OrderItem {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
+    
 }
