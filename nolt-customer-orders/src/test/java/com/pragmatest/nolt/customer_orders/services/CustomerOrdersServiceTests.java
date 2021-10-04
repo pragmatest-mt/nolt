@@ -16,10 +16,10 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
+import static com.pragmatest.nolt.customer_orders.helpers.Assertions.assertIsValidUuid;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -55,6 +55,7 @@ class CustomerOrdersServiceTests {
         verify(repository, times(1)).save(argThat(matcher));
 
         assertNotNull(id, "Id in response is null.");
+
         assertEquals(matcher.getMatch().getOrderId(), id);
     }
 }
@@ -97,5 +98,6 @@ class CustomerOrderEntityMatcher implements ArgumentMatcher<CustomerOrderEntity>
             return false;
         }
 
+        assertIsValidUuid(id);
     }
 }
