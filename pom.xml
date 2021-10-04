@@ -156,7 +156,8 @@
 		</plugins>
 
 		<!-- Parent pom manages plugins for all submodules. These however need to be in submodule pom to be used. -->
-		<pluginManagement>			<plugins>
+		<pluginManagement>
+			<plugins>
 				<!--
 				Can create jar files with all application dependencies that can be run with java -jar
 				Helps start application before integration tests

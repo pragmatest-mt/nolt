@@ -2,20 +2,21 @@ package com.pragmatest.nolt.customer_orders.web.responses;
 
 public class SubmitOrderResponse {
 
-    private String id;
+    private String orderId;
 
-    public SubmitOrderResponse(String id) {
-        this.id = id;
+    public SubmitOrderResponse(String orderId) {
+        this.orderId = orderId;
     }
 
     public SubmitOrderResponse() {
     }
 
-    public String getId() {
-        return id;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
+
 }
