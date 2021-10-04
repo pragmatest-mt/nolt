@@ -30,7 +30,7 @@ public class CustomerOrderSubmissionSteps {
         ResponseEntity<CustomerSubmitOrderResponse> response = customerService.SubmitCustomerOrder(customerId, request);
         CustomerSubmitOrderResponse responseBody = response.getBody();
 
-        order.setOrderId(responseBody.getId());
+        order.setOrderId(responseBody.getOrderId());
         order.setCustomerId(customerId);
     }
 

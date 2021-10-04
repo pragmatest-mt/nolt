@@ -15,6 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 import java.util.UUID;
 
+import static com.pragmatest.nolt.customer_orders.helpers.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -46,12 +47,11 @@ public class CustomerOrdersControllerTests {
 
         assertNotNull(actualResponse, "Response is null.");
 
-        String id = actualResponse.getId();
+        String id = actualResponse.getOrderId();
         assertNotNull(id, "Id in response is null.");
 
         assertEquals(expectedOrderId, id);
 
         verify(customerOrdersServiceMock, times(1)).submitOrder(any(OrderSubmission.class));
     }
-
 }
