@@ -7,6 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 
+import static com.pragmatest.nolt.customer_orders.helpers.Assertions.assertIsValidUuid;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -25,12 +26,6 @@ class CustomerOrdersServiceTests {
 
         // Assert
         assertNotNull(id, "Id in response is null.");
-
-        try {
-            UUID uuid = UUID.fromString(id);
-            assertEquals(id, uuid.toString());
-        } catch(IllegalArgumentException e) {
-            fail(id + " is not a valid UUID.");
-        }
+        assertIsValidUuid(id);
     }
 }
