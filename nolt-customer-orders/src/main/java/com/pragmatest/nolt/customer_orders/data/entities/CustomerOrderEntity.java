@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class CustomerOrderEntity {
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection
     @CollectionTable(name="ORDER_ITEMS", joinColumns=@JoinColumn(name="ORDER_ID"))
     private List<OrderItem> orderItems;
 
