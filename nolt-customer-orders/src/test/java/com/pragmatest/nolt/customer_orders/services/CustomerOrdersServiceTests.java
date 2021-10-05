@@ -37,9 +37,10 @@ class CustomerOrdersServiceTests {
     @Test
     public void testSubmitOrder() {
         // Arrange
-        OrderSubmission orderSubmission = new OrderSubmission();
-        orderSubmission.setCustomerId("00de292f-cfaf-4831-8900-6eba381517ec");
-        orderSubmission.setOrderItems(List.of(new OrderItem("8b610d9f-26d4-4ef5-9153-2bc1454fc44b", 1, "")));
+        String customerId = UUID.randomUUID().toString();
+        List<OrderItem> orderItems = List.of(new OrderItem("burger", 1, "no lettuce"));
+
+        OrderSubmission orderSubmission = new OrderSubmission(customerId, orderItems);
 
         CustomerOrderEntity passedCustomerOrderEntity = modelMapper.map(orderSubmission, CustomerOrderEntity.class);
 
@@ -49,14 +50,14 @@ class CustomerOrdersServiceTests {
                 .thenAnswer(I -> matcher.getMatch());
 
         // Act
-        String id = customerOrdersService.submitOrder(orderSubmission);
+        String actualOrderId = customerOrdersService.submitOrder(orderSubmission);
 
         // Assert
         verify(repository, times(1)).save(argThat(matcher));
 
-        assertNotNull(id, "Id in response is null.");
-        assertIsValidUuid(id);
-        assertEquals(matcher.getMatch().getOrderId(), id);
+        assertNotNull(actualOrderId, "Id in response is null.");
+        assertIsValidUuid(actualOrderId);
+        assertEquals(matcher.getMatch().getOrderId(), actualOrderId);
     }
 }
 
