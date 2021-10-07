@@ -30,6 +30,6 @@ public class CustomerOrdersService
         return savedEntity.getOrderId();
     }
 
-    // TODO add a getOrder method that reads the order with the specified id from the CustomerOrdersRepository
+    // TODO - add a getOrder method that reads the order with the specified id from the CustomerOrdersRepository. The order should be returned back to the Controller in the form of a new Order class.
 
 }

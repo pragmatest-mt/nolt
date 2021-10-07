@@ -62,7 +62,7 @@ public class CustomerOrdersControllerTests {
         String customerId = UUID.randomUUID().toString();
         String orderId = UUID.randomUUID().toString();
 
-        // TODO - create a mock for the CustomerOrdersService's getOrder method that, given the orderId, return a fake order
+        // TODO - mock the customerOrdersServiceMock's getOrder method. When given the orderId, this method should return an order
 
         // Act
 
@@ -70,8 +70,8 @@ public class CustomerOrdersControllerTests {
 
         // Assert
 
-        // TODO - verify service mock was called
-        // TODO - assert the response matches what was given by mock
+        // TODO - verify that the customerOrdersServiceMock's getOrder method was called
+        // TODO - assert the response matches has the same values as that given by the method mocked in the service
     }
 
 }

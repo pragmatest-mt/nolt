@@ -63,7 +63,7 @@ class CustomerOrdersServiceTests {
     public void testGetOrder() {
         // Arrange
 
-        // TODO setup the mock for the repository layer and any other variable required to Act and Assert
+        // TODO - setup the mock for the repository layer and any other variable required to Act and Assert
 
         // Act
 
