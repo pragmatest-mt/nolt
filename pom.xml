@@ -176,5 +176,6 @@
     <modules>
 		<module>nolt-specifications</module>
 		<module>nolt-customer-orders</module>
-	</modules>
+        <module>nolt-restaurant-orders</module>
+    </modules>
 </project>
