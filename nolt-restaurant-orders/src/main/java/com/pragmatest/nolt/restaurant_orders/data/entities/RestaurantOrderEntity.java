@@ -1,5 +1,7 @@
 package com.pragmatest.nolt.restaurant_orders.data.entities;
 
+import com.pragmatest.nolt.restaurant_orders.common.enums.OrderState;
+
 import javax.persistence.*;
 import java.util.List;
 
