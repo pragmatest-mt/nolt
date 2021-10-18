@@ -1,0 +1,17 @@
+version: "3.0"
+
+services:
+  nolt-customer-orders:
+    image: nolt-customer-orders-ms
+    build:
+      context: ..
+      dockerfile: ./nolt-customer-orders/Dockerfile
+    ports:
+      - "9001:9001"
+  nolt-restaurant-orders:
+    image: nolt-restaurant-orders-ms
+    build:
+      context: ..
+      dockerfile: ./nolt-restaurant-orders/Dockerfile
+    ports:
+      - "9002:9002"
