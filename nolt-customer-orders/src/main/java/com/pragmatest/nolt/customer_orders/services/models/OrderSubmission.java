@@ -3,8 +3,6 @@ package com.pragmatest.nolt.customer_orders.services.models;
 import java.util.List;
 
 public class OrderSubmission {
-
-
     private List<OrderItem> orderItems;
     private String customerId;
 
