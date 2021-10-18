@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -35,13 +36,15 @@ public class RestaurantOrdersControllerTests {
     ModelMapper mapper;
 
     @Test
-    public void accept_AcceptExistentOrderId_OrderAccepted() {
+    public void accept_AcceptExistentOrderId_ReturnsAcceptedOrder() {
         // Arrange
         String orderId = UUID.randomUUID().toString();
         Order order = new Order(orderId,
                 List.of(new OrderItem("burger", 1, "extra cheese"),
                         new OrderItem("pizza margherita", 2, "")),
                 OrderState.ACCEPTED);
+
+        AcceptOrderResponse expectedOrderResponse = mapper.map(order, AcceptOrderResponse.class);
 
         when(restaurantsOrderServiceMock.acceptOrder(orderId)).thenReturn(order);
 
@@ -51,30 +54,25 @@ public class RestaurantOrdersControllerTests {
         // Assert
         assertNotNull(actualOrderResponse, "Order Response is null");
 
-        AcceptOrderResponse expectedOrderResponse = mapper.map(order, AcceptOrderResponse.class);
-
-
         DeepEquals.deepEquals(expectedOrderResponse, actualOrderResponse);
 
         verify(restaurantsOrderServiceMock, times(1)).acceptOrder(orderId);
     }
 
     @Test
-    public void accept_AcceptNonExistentOrderId_ExceptionThrown() {
+    public void accept_AcceptNonExistentOrderId_ThrowsException() {
         // Arrange
         String orderOrderId = UUID.randomUUID().toString();
-        String expectedExceptionMessage = "Order not found";
 
         when(restaurantsOrderServiceMock.acceptOrder(orderOrderId)).thenReturn(null);
 
         // Act
-        Exception thrownException = assertThrows(ResponseStatusException.class, () -> {
+        ResponseStatusException thrownException = assertThrows(ResponseStatusException.class, () -> {
             restaurantOrdersController.accept(orderOrderId);
         });
 
         // Assert
-        String actualExceptionMessage = thrownException.getMessage();
-        assertTrue(actualExceptionMessage.contains(expectedExceptionMessage));
+        assertEquals(HttpStatus.NOT_FOUND, thrownException.getStatus());
 
         verify(restaurantsOrderServiceMock, times(1)).acceptOrder(orderOrderId);
     }
