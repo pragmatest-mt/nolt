@@ -10,7 +10,8 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<spring-boot.version>2.5.3</spring-boot.version>
+		<spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+		<spring-kafka.version>2.6.11</spring-kafka.version>
 		<cucumber.version>6.10.4</cucumber.version>
 		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 		<jackson.version>2.12.3</jackson.version>
@@ -36,6 +37,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
 				<version>${spring-boot.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.kafka</groupId>
+				<artifactId>spring-kafka</artifactId>
+				<version>${spring-kafka.version}</version>
 			</dependency>
 
 			<dependency>
