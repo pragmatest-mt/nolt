@@ -1,11 +1,15 @@
 package com.pragmatest.nolt.customer_orders.services.models;
 
+import com.pragmatest.nolt.customer_orders.enums.OrderState;
+
 import java.util.List;
 
 public class Order {
     String customerId;
     String orderId;
     List<OrderItem> orderItems;
+    OrderState orderState;
+
 
     public Order(String customerId, String orderId, List<OrderItem> orderItems) {
         this.customerId = customerId;
@@ -43,5 +47,13 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public OrderState getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(OrderState orderState) {
+        this.orderState = orderState;
     }
 }

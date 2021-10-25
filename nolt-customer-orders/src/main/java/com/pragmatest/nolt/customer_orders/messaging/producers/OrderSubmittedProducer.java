@@ -13,7 +13,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 public class OrderSubmittedProducer {
 
     @Value(value = "${order.submitted.topic}")
-    private String orderSubmittedTopicName;
+    String orderSubmittedTopicName;
 
     @Autowired
     KafkaTemplate<String, OrderSubmittedEvent> orderSubmittedKafkaTemplate;

@@ -23,7 +23,7 @@ public class CustomerOrdersService {
     ModelMapper mapper;
 
     @Autowired
-    private OrderSubmittedProducer orderSubmittedProducer;
+    OrderSubmittedProducer orderSubmittedProducer;
 
     public String submitOrder(OrderSubmission orderSubmission) {
 
@@ -49,4 +49,15 @@ public class CustomerOrdersService {
         return order;
     }
 
+    public void acceptOrder(String orderId) {
+        Optional<CustomerOrderEntity> orderEntity = repository.findById(orderId);
+
+        if (orderEntity.isEmpty()) {
+            return;
+        }
+
+        CustomerOrderEntity customerOrderEntity = orderEntity.get();
+        customerOrderEntity.setOrderState(OrderState.ACCEPTED);
+        repository.save(customerOrderEntity);
+    }
 }

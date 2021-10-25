@@ -3,6 +3,8 @@ package com.pragmatest.nolt.restaurant_orders.services;
 import com.pragmatest.nolt.restaurant_orders.common.enums.OrderState;
 import com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity;
 import com.pragmatest.nolt.restaurant_orders.data.repositories.RestaurantsOrderRepository;
+import com.pragmatest.nolt.restaurant_orders.messaging.events.OrderAcceptedEvent;
+import com.pragmatest.nolt.restaurant_orders.messaging.producers.OrderAcceptedProducer;
 import com.pragmatest.nolt.restaurant_orders.services.models.Order;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class RestaurantOrdersService
     @Autowired
     ModelMapper mapper;
 
+    @Autowired
+    OrderAcceptedProducer orderAcceptedProducer;
+
     public Order acceptOrder(String orderId){
         Optional<RestaurantOrderEntity> restaurantOrderEntity = repository.findById(orderId);
 
@@ -28,6 +33,10 @@ public class RestaurantOrdersService
 
         restaurantOrderEntity.get().setOrderState(OrderState.ACCEPTED);
         RestaurantOrderEntity updatedOrderEntity = repository.save(restaurantOrderEntity.get());
+
+        OrderAcceptedEvent orderAcceptedEvent = new OrderAcceptedEvent();
+        orderAcceptedEvent.setOrderId(updatedOrderEntity.getOrderId());
+        orderAcceptedProducer.send(orderAcceptedEvent);
 
         Order updatedOrder = mapper.map(updatedOrderEntity, Order.class);
 

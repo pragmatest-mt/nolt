@@ -17,8 +17,12 @@ public class OrderAcceptedConsumer {
     private ModelMapper modelMapper;
 
     @KafkaListener(
-            topics = "${order.accepted.topic}")
+            topics = "${order.accepted.topic}",
+            groupId = "${spring.kafka.consumer.group-id}",
+            containerFactory = "orderAcceptedEventKafkaListenerContainerFactory")
     public void handleOrderAccepted(OrderAcceptedEvent orderAcceptedEvent) throws Exception {
-        // TODO - Handle event here.
+        System.out.println("Consumed message: " + orderAcceptedEvent);
+
+        ordersService.acceptOrder(orderAcceptedEvent.getOrderId());
     }
 }
