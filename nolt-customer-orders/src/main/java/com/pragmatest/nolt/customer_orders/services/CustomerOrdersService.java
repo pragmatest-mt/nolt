@@ -5,18 +5,14 @@ import com.pragmatest.nolt.customer_orders.data.repositories.CustomerOrdersRepos
 import com.pragmatest.nolt.customer_orders.services.models.Order;
 import com.pragmatest.nolt.customer_orders.services.models.OrderSubmission;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CustomerOrdersService
-{
+public class CustomerOrdersService {
     @Autowired
     CustomerOrdersRepository repository;
 
