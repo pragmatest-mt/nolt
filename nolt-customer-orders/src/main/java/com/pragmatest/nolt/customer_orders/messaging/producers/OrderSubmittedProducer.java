@@ -23,12 +23,12 @@ public class OrderSubmittedProducer {
             .addCallback(new ListenableFutureCallback<SendResult<String, OrderSubmittedEvent>>() {
                 @Override
                 public void onFailure(Throwable throwable) {
-                    // Handle failures here.
+                    // TODO - Handle failures here.
                 }
 
                 @Override
                 public void onSuccess(SendResult<String, OrderSubmittedEvent> eventSendResult) {
-                    // Handle successes here.
+                    // TODO - Handle successes here.
                 }
             });
     }

@@ -6,7 +6,6 @@ import com.pragmatest.nolt.restaurant_orders.data.entities.OrderItem;
 import com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity;
 import com.pragmatest.nolt.restaurant_orders.data.repositories.RestaurantsOrderRepository;
 import com.pragmatest.nolt.restaurant_orders.services.models.Order;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
 import org.modelmapper.ModelMapper;
@@ -28,7 +27,7 @@ import static org.mockito.Mockito.*;
 class RestaurantsOrdersServiceTests {
 
     @Autowired
-    RestaurantsOrderService restaurantsOrderService;
+    RestaurantOrdersService restaurantsOrderService;
 
     @MockBean
     RestaurantsOrderRepository repository;

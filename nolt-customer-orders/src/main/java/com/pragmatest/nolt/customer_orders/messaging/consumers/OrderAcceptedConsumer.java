@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 
-public class OrderSubmittedConsumer {
+public class OrderAcceptedConsumer {
 
     @Autowired
     private CustomerOrdersService ordersService;
@@ -19,6 +19,6 @@ public class OrderSubmittedConsumer {
             groupId = "${spring.kafka.consumer.group-id}",
             containerFactory = "orderAcceptedEventKafkaListenerContainerFactory")
     public void handleOrderAccepted(OrderAcceptedEvent orderAcceptedEvent) throws Exception {
-        // Handle event here.
+        // TODO - Handle event here.
     }
 }

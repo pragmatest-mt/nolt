@@ -1,6 +1,6 @@
 package com.pragmatest.nolt.restaurant_orders.web.controllers;
 
-import com.pragmatest.nolt.restaurant_orders.services.RestaurantsOrderService;
+import com.pragmatest.nolt.restaurant_orders.services.RestaurantOrdersService;
 import com.pragmatest.nolt.restaurant_orders.services.models.Order;
 import com.pragmatest.nolt.restaurant_orders.web.responses.AcceptOrderResponse;
 import org.modelmapper.ModelMapper;
@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class RestaurantOrdersController {
 
     @Autowired
-    RestaurantsOrderService restaurantsOrderService;
+    RestaurantOrdersService restaurantsOrderService;
 
     @Autowired
     ModelMapper mapper;

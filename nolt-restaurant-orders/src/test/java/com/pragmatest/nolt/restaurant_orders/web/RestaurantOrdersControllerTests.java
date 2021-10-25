@@ -2,7 +2,7 @@ package com.pragmatest.nolt.restaurant_orders.web;
 
 import com.cedarsoftware.util.DeepEquals;
 import com.pragmatest.nolt.restaurant_orders.common.enums.OrderState;
-import com.pragmatest.nolt.restaurant_orders.services.RestaurantsOrderService;
+import com.pragmatest.nolt.restaurant_orders.services.RestaurantOrdersService;
 import com.pragmatest.nolt.restaurant_orders.services.models.Order;
 import com.pragmatest.nolt.restaurant_orders.services.models.OrderItem;
 import com.pragmatest.nolt.restaurant_orders.web.controllers.RestaurantOrdersController;
@@ -30,7 +30,7 @@ public class RestaurantOrdersControllerTests {
     RestaurantOrdersController restaurantOrdersController;
 
     @MockBean
-    RestaurantsOrderService restaurantsOrderServiceMock;
+    RestaurantOrdersService restaurantsOrderServiceMock;
 
     @Autowired
     ModelMapper mapper;
