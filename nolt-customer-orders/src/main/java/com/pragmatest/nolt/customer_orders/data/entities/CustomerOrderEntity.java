@@ -1,5 +1,7 @@
 package com.pragmatest.nolt.customer_orders.data.entities;
 
+import com.pragmatest.nolt.customer_orders.enums.OrderState;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +16,9 @@ public class CustomerOrderEntity {
 
     @Id
     private String orderId;
+
+    @Enumerated(EnumType.STRING)
+    private OrderState orderState;
 
     public CustomerOrderEntity(List<OrderItem> orderItems, String customerId, String orderId) {
         this.orderItems = orderItems;
@@ -48,4 +53,11 @@ public class CustomerOrderEntity {
         this.orderId = orderId;
     }
 
+    public OrderState getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(OrderState orderState) {
+        this.orderState = orderState;
+    }
 }

@@ -7,15 +7,15 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
-@Configuration
-@Profile("!test")
-public class DataPopulatorConfiguration {
-
-    @Bean
-    public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
-        Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{new ClassPathResource("orders.json")});
-        return factory;
-    }
-
-}
+//@Configuration
+//@Profile("!test")
+//public class DataPopulatorConfiguration {
+//
+//    @Bean
+//    public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
+//        Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+//        factory.setResources(new Resource[]{new ClassPathResource("orders.json")});
+//        return factory;
+//    }
+//
+//}

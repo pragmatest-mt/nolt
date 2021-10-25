@@ -1,6 +1,7 @@
 package com.pragmatest.nolt.customer_orders.messaging.producers;
 
 import com.pragmatest.nolt.customer_orders.messaging.events.OrderSubmittedEvent;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -23,12 +24,13 @@ public class OrderSubmittedProducer {
             .addCallback(new ListenableFutureCallback<SendResult<String, OrderSubmittedEvent>>() {
                 @Override
                 public void onFailure(Throwable throwable) {
-                    // TODO - Handle failures here.
+                    System.out.println("Failed to produced message: " + throwable);
                 }
 
                 @Override
                 public void onSuccess(SendResult<String, OrderSubmittedEvent> eventSendResult) {
-                    // TODO - Handle successes here.
+                    ProducerRecord<String, OrderSubmittedEvent> producerRecord = eventSendResult.getProducerRecord();
+                    System.out.println("Successfully produced message: " + producerRecord);
                 }
             });
     }

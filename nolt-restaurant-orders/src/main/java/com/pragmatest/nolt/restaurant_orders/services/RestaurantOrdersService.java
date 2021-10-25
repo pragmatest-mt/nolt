@@ -33,4 +33,11 @@ public class RestaurantOrdersService
 
         return updatedOrder;
     }
+
+    public void submitOrder(Order order) {
+        RestaurantOrderEntity orderEntity = mapper.map(order, RestaurantOrderEntity.class);
+        orderEntity.setOrderState(OrderState.SUBMITTED);
+
+        repository.save(orderEntity);
+    }
 }

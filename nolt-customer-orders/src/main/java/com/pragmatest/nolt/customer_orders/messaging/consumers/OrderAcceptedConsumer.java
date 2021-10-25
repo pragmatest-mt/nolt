@@ -5,7 +5,9 @@ import com.pragmatest.nolt.customer_orders.services.CustomerOrdersService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderAcceptedConsumer {
 
     @Autowired
@@ -15,9 +17,7 @@ public class OrderAcceptedConsumer {
     private ModelMapper modelMapper;
 
     @KafkaListener(
-            topics = "${order.accepted.topic}",
-            groupId = "${spring.kafka.consumer.group-id}",
-            containerFactory = "orderAcceptedEventKafkaListenerContainerFactory")
+            topics = "${order.accepted.topic}")
     public void handleOrderAccepted(OrderAcceptedEvent orderAcceptedEvent) throws Exception {
         // TODO - Handle event here.
     }
