@@ -8,6 +8,8 @@ services:
       dockerfile: ./nolt-customer-orders/Dockerfile
     ports:
       - "9001:9001"
+    environment:
+      kafka_bootstrap_servers: 'broker:29092'
   nolt-restaurant-orders:
     image: nolt-restaurant-orders-ms
     build:
@@ -15,3 +17,5 @@ services:
       dockerfile: ./nolt-restaurant-orders/Dockerfile
     ports:
       - "9002:9002"
+    environment:
+      kafka_bootstrap_servers: 'broker:29092'

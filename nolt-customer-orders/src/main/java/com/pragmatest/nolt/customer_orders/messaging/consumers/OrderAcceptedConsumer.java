@@ -5,7 +5,9 @@ import com.pragmatest.nolt.customer_orders.services.CustomerOrdersService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderAcceptedConsumer {
 
     @Autowired

@@ -5,7 +5,9 @@ import com.pragmatest.nolt.restaurant_orders.services.RestaurantOrdersService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderSubmittedConsumer {
 
     @Autowired
