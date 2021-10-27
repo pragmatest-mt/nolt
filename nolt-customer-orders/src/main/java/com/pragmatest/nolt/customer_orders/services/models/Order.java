@@ -10,7 +10,6 @@ public class Order {
     List<OrderItem> orderItems;
     OrderState orderState;
 
-
     public Order(String customerId, String orderId, List<OrderItem> orderItems) {
         this.customerId = customerId;
         this.orderId = orderId;

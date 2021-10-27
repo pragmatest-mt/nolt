@@ -4,5 +4,5 @@ public enum OrderState {
     DEFAULT,
     SUBMITTED,
     ACCEPTED,
-    REJECTED;
+    REJECTED
 }

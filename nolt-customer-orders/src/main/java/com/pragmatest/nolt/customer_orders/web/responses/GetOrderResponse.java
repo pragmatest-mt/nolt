@@ -10,7 +10,7 @@ public class GetOrderResponse {
     String customerId;
     String orderId;
     List<OrderItem> orderItems;
-    private OrderState orderState;
+    OrderState orderState;
 
     public GetOrderResponse(String customerId, String orderId, List<OrderItem> orderItems) {
         this.customerId = customerId;
