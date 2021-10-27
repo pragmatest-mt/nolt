@@ -10,6 +10,8 @@ services:
       - "9001:9001"
     environment:
       kafka_bootstrap_servers: 'broker:29092'
+    depends_on: [broker]
+
   nolt-restaurant-orders:
     image: nolt-restaurant-orders-ms
     build:
@@ -19,3 +21,4 @@ services:
       - "9002:9002"
     environment:
       kafka_bootstrap_servers: 'broker:29092'
+    depends_on: [broker]
