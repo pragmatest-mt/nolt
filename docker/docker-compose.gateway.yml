@@ -1,0 +1,16 @@
+version: "3.0"
+
+services:
+  gateway:
+    image: nolt-gateway
+    build:
+      context: ..
+      dockerfile: ./nolt-gateway/Dockerfile
+    ports:
+      - "8082:8083"
+    environment:
+      customer_orders_url: 'nolt-customer-orders:9001'
+      restaurant_orders_url: 'nolt-restaurant-orders:9002'
+    depends_on:
+      - nolt-customer-orders
+      - nolt-restaurant-orders

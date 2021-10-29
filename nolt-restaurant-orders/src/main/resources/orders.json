@@ -1,0 +1,53 @@
+[
+  {
+    "_class": "com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity",
+    "orderId": "505d63d6-2d34-11ec-8d3d-0242ac130003",
+    "orderItems": [
+      {
+        "menuItemId": "burger",
+        "quantity": 1,
+        "notes": "extra cheese"
+      },
+      {
+        "menuItemId": "pizza capriciosa",
+        "quantity": 2,
+        "notes": ""
+      },
+      {
+        "menuItemId": "pizza margherita",
+        "quantity": 1,
+        "notes": "extra mushrooms"
+      }
+    ],
+    "orderState": "SUBMITTED"
+  },
+  {
+    "_class": "com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity",
+    "orderId": "6c4b72cc-2d34-11ec-8d3d-0242ac130003",
+    "orderItems": [
+      {
+        "menuItemId": "chicken wrap",
+        "quantity": 1,
+        "notes": "extra coleslaw"
+      }
+    ],
+    "orderState": "SUBMITTED"
+  },
+  {
+    "_class": "com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity",
+    "orderId": "95963b76-2d34-11ec-8d3d-0242ac130003",
+    "orderItems": [
+      {
+        "menuItemId": "pizza hawaiian",
+        "quantity": 1,
+        "notes": "extra onion"
+      },
+      {
+        "menuItemId": "cheese burger",
+        "quantity": 2,
+        "notes": ""
+      }
+    ],
+    "orderState": "SUBMITTED"
+  }
+]

@@ -1,0 +1,52 @@
+package com.pragmatest.nolt.restaurant_orders.services;
+
+import com.pragmatest.nolt.restaurant_orders.common.enums.OrderState;
+import com.pragmatest.nolt.restaurant_orders.data.entities.RestaurantOrderEntity;
+import com.pragmatest.nolt.restaurant_orders.data.repositories.RestaurantsOrderRepository;
+import com.pragmatest.nolt.restaurant_orders.messaging.events.OrderAcceptedEvent;
+import com.pragmatest.nolt.restaurant_orders.messaging.producers.OrderAcceptedProducer;
+import com.pragmatest.nolt.restaurant_orders.services.models.Order;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class RestaurantOrdersService
+{
+    @Autowired
+    RestaurantsOrderRepository repository;
+
+    @Autowired
+    ModelMapper mapper;
+
+    @Autowired
+    OrderAcceptedProducer orderAcceptedProducer;
+
+    public Order acceptOrder(String orderId){
+        Optional<RestaurantOrderEntity> restaurantOrderEntity = repository.findById(orderId);
+
+        if (restaurantOrderEntity.isEmpty()) {
+            return null;
+        }
+
+        restaurantOrderEntity.get().setOrderState(OrderState.ACCEPTED);
+        RestaurantOrderEntity updatedOrderEntity = repository.save(restaurantOrderEntity.get());
+
+        OrderAcceptedEvent orderAcceptedEvent = new OrderAcceptedEvent();
+        orderAcceptedEvent.setOrderId(updatedOrderEntity.getOrderId());
+        orderAcceptedProducer.send(orderAcceptedEvent);
+
+        Order updatedOrder = mapper.map(updatedOrderEntity, Order.class);
+
+        return updatedOrder;
+    }
+
+    public void submitOrder(Order order) {
+        RestaurantOrderEntity orderEntity = mapper.map(order, RestaurantOrderEntity.class);
+        orderEntity.setOrderState(OrderState.SUBMITTED);
+
+        repository.save(orderEntity);
+    }
+}
