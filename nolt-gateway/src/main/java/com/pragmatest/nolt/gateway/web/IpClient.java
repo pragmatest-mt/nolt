@@ -14,7 +14,7 @@ public class IpClient {
 
     public IpStackResponse getGeoLocationData(String ipAddress) {
        IpStackResponse response =  restTemplate
-                .getForObject("http://api.ipstack.com/" + ipAddress + "?access_key=7ef7486e854da36c9fdc726e895acca9",
+                .getForObject("http://api.ipstack.com/" + ipAddress + "?access_key=8a306969c3002b94f7f9356d3e65c7b6",
                         IpStackResponse.class );
         return response;
     }
