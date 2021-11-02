@@ -34,6 +34,7 @@ public class RestaurantsOrderServiceImpl implements ResturantsOrderService{
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         httpHeaders.set("X-Restaurant-Id", restaurantId);
+        httpHeaders.set("X-Forwarded-For", "88.203.10.242");
         return httpHeaders;
     }
 

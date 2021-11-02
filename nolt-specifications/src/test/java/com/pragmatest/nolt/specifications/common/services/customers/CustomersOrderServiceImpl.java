@@ -51,6 +51,7 @@ public class CustomersOrderServiceImpl implements CustomersOrderService {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         httpHeaders.set("X-Customer-Id", customerId);
+        httpHeaders.set("X-Forwarded-For", "88.203.10.242");
         return httpHeaders;
     }
 

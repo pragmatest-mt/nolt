@@ -22,7 +22,7 @@ public class ResturantOrderAcceptanceSteps {
 
     @When("the restaurant accepts the order")
     public void theRestaurantAcceptsTheOrder() {
-        String orderId = "9c26f0e6-7f1d-480c-8ca5-3f9c21208b96";
+        String orderId = order.getOrderId();
         String restaurantId = UUID.randomUUID().toString();
 
         DateTime estimatedDeliveryTime = DateTime.now().plusHours(2);

@@ -7,7 +7,7 @@ public class GetCustomerOrderResponse {
     private String orderId;
     private String customerId;
     private List<OrderItem> orderItems;
-    private String state;
+    private String orderState;
 
     public String getOrderId() {
         return orderId;
@@ -33,11 +33,11 @@ public class GetCustomerOrderResponse {
         this.orderItems = orderItems;
     }
 
-    public String getState() {
-        return state;
+    public String getOrderState() {
+        return orderState;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setOrderState(String orderState) {
+        this.orderState = orderState;
     }
 }
