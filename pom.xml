@@ -19,7 +19,6 @@
 	<!-- Parent pom manages plugins for all submodules. These however need to be in submodule pom to be used. -->
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter</artifactId>
@@ -87,60 +86,11 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-test</artifactId>
-				<version>${spring-boot.version}</version>
-				<scope>test</scope>
-				<exclusions>
-					<exclusion>
-						<groupId>org.junit.vintage</groupId>
-						<artifactId>junit-vintage-engine</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-java</artifactId>
-				<version>${cucumber.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-spring</artifactId>
-				<version>${cucumber.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-junit</artifactId>
-				<version>${cucumber.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>net.masterthought</groupId>
-				<artifactId>cucumber-reporting</artifactId>
-				<version>5.5.4</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>com.cedarsoftware</groupId>
-				<artifactId>java-util</artifactId>
-				<version>1.64.0</version>
-				<scope>test</scope>
-			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 
 	<build>
-
-		<!-- These plugins are automatically inherited by all submodules. -->
+			<!-- These plugins are automatically inherited by all submodules. -->
 		<plugins>
 			<!-- Override java version from 1.6 to 1.11. -->
 			<plugin>
@@ -173,7 +123,6 @@
 	</build>
 
     <modules>
-		<module>nolt-specifications</module>
 		<module>nolt-customer-orders</module>
 	</modules>
 </project>
