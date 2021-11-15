@@ -1,7 +1,7 @@
-package com.pragmatest.nolt.specifications.common.models.customers;
+package com.pragmatest.nolt.customer_orders.services.models;
+
 
 public class OrderItem {
-
     private String menuItemId;
     private int quantity;
     private String notes;
